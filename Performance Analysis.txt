@@ -1,0 +1,39 @@
+Physically Secure and Fog-Enabled Lightweight Authentication Scheme for e-textiles 
+	COMPUTATIONAL OVERHEAD   
+To analyze the computational overhead of the proposed scheme, the time consumed by the important cryptographic operations such as the hash function (T_H), PUF (T_PUF), reverse fuzzy extractor (T_F), scalar multiplication (T_M) and symmetric cryptography (T_S) of the suggested protocols are considered in this section. The suggested approach is evaluated using Ubuntu 14.04 VMware with an Intel Core i5-8265U processor and 8-GB RAM system. The simulation work was carried out using the JCE library Pbc-05.14 and the computational overhead of different cryptographic operations, such as T_H, T_PUF, T_F, T_M, and T_S are calculated as 0.011 ms (millisecond), 0.12 ms, 2.53 ms, 2.6 ms, and 0.041 ms respectively.  Table 1 lists the computational overhead of various methods, and it ensures that the suggested approach consumes only 3.024 ms to establish a session key, whereas other related existing approaches, [24-27] consume 8.47 ms, 8.04 ms, 5.77 ms, and 15.79 ms as a communication overhead.
+TABLE 1. Computational overhead of various schemes
+Methods	〖eTK〗_i	〖FN〗_i	〖eT〗_j	Total
+[24]	〖2T〗_S+〖8T〗_H+T_F	〖5T〗_S+〖11T〗_H+T_F	〖2T〗_S+〖6T〗_H+T_F+〖2T〗_PUF	〖9T〗_S+〖25T〗_H+〖3T〗_F+〖2T〗_PUF=8.474ms
+[25]	〖14T〗_H+〖2T〗_F+T_PUF	〖8T〗_H	〖8T〗_H+T_F	〖30T〗_H+〖3T〗_F+T_PUF=8.04ms
+[26]	T_S+〖10T〗_H+T_F	〖4T〗_S+〖9T〗_H	〖3T〗_S+〖5T〗_H+T_F+T_PUF	〖8T〗_S+〖24T〗_H+〖2T〗_F+T_PUF=5.772ms
+[27]	〖3T〗_M+〖6T〗_H	T_M+〖6T〗_H	〖2T〗_M+〖6T〗_H	〖6T〗_M+〖18T〗_H=15.798ms
+Suggested scheme	〖15T〗_H	〖12T〗_H	〖7T〗_H+T_F+T_PUF	〖34T〗_H+T_F+T_PUF=3.024ms
+
+
+	COMMUNICATION OVERHEAD   
+The information communicated among the system entities to establish the session key is considered to analyze the communication overhead of the suggested approach. The bit length of the identity of the system entity, hash function, random number, PUF and block size of symmetric cryptography are 20 bytes, 4 bytes, 20 bytes, 16 bytes, and 16 bytes, respectively [28].
+TABLE 2. Communication overhead of various schemes
+Methods	No. of messages	Overhead (bytes)
+[24]	4	356
+[25]	5	360
+[26]	6	456
+[27]	4	372
+Suggested scheme	4	276
+The suggested approach communicates four messages such as {〖AID〗_(〖eU〗_i ),K_1,K_2,V_1}, {〖AID〗_(〖eU〗_i ),K_3,K_4,V_2}, {K_5,V_3} and {K_6,V_4} to establish the session between 〖eU〗_i and 〖eT〗_j. Hence, the communication overhead of the suggested approach is computed as 80 + 116 + 40 + 60 = 276 bytes. Table 2 compares the communication overhead of the suggested approach with the existing competitive schemes [24-27]. The suggested approach consumes only 276 bytes as communication overhead, whereas the existing competitive schemes [24-27] consume 356 bytes, 360 bytes, 456 bytes, and 372 bytes, respectively. 
+	STORAGE AND ENERGY COSTS   
+To provide a comprehensive evaluation of the proposed scheme, we include the analysis of storage and energy costs. 
+Storage Cost: The storage cost involves the amount of memory required to store the security parameters and cryptographic keys for each system entity (e〖TK〗_i and 〖eT〗_j) in the proposed scheme.
+Storage Requirements:
+	e-Textile Tracker (e〖TK〗_i) : It calculates and stores the values {M_(〖eTK〗_i ),N_(〖eTK〗_i ),L_1,L_2,σ_(〖eTK〗_i )} in the e-Textile Tracker such as a mobile phone. Total storage cost of e-Textile Tracker calculated as 20 + 20 + 16 + 16 + 20 = 92 bytes.
+	e-Textile (〖eT〗_j): It calculates and stores the values {h_(〖eT〗_j)^',α_(〖eT〗_j )} in the e-Textile. Total storage cost of e-Textile Tracker device calculated as 20 + 20 = 40 bytes. 
+The total storage cost for the proposed scheme is the sum of the storage costs for each entity: 92 bytes (e〖TK〗_i) + 40 bytes (〖eT〗_j ) = 132 bytes. 
+Energy Costs: Energy costs involve the power consumption required to execute the cryptographic operations during the authentication process. The energy cost can be estimated based on the computational overhead and the energy consumption of each cryptographic operation.
+The energy consumption for cryptographic operations is as follows: Hash function (T_H) is 3.5 µJ, PUF (T_PUF) is 8 µJ, Reverse fuzzy extractor (T_F) is 6 µJ, Scalar multiplication (T_M)is 9.5 µJ and Symmetric cryptography (T_S) is 4 µJ.
+Using the computational overhead values and the energy consumption per operation, the total energy consumption for each entity is calculated as follows:
+	e-Textile (〖eT〗_j): The computational overhead of 〖eT〗_j is 
+〖7T〗_H+T_F+T_PUF. The energy cost required for 〖eT〗_j is calculated as  (7×3.5) + 6 + 8 = 38.5 µJ. The total energy cost for the proposed scheme is: 52.5 µJ (〖eU〗_i) + 42 µJ (〖FN〗_i) + 38.5 µJ (〖eT〗_j) = 133 µJ 
+	e-Textile Tracker (e〖TK〗_i):  The computational overhead of 〖eU〗_i is 〖15T〗_H. The energy cost required for 〖eU〗_i is calculated as 15×3.5 = 52.5 µJ
+	Fog Node (〖FN〗_i): The computational overhead of 〖FN〗_i is 〖12T〗_H. The energy cost required for 〖FN〗_i is calculated as 2×3.5 = 42 µJ.
+
+
+
